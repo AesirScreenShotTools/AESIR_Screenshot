@@ -1,0 +1,60 @@
+{
+  "product": "AESIR Custom Screenshot Tool",
+  "version": 1,
+  "development_link": "https://github.com/muratdemirtas/aesir",
+  "update_link": "https://raw.githubusercontent.com/muratdemirtas/aesir/master/versions.json",
+  "icons": {
+    "folder": "icons",
+    "icons": {
+      "indicator": "systemtray.png",
+      "indicatorwarning": "systemtray_warning.png",
+      "opclose": "close.svg",
+      "opcopy": "copy.svg",
+      "opsave": "save.svg",
+      "opprinter": "printer.svg",
+      "opcloud": "cloud-upload.svg",
+      "opgoogle": "google.svg",
+      "oprectangle": "rectangle.svg",
+      "optext" : "optext.svg",
+      "opmarker" : "marker.png",
+      "opline" : "line.svg",
+      "oparrow" : "arrow.svg",
+      "oppencil" : "pencil.svg",
+      "aboutlogo": "logo.png"
+    }
+  },
+  "SoftwareUpdater": {
+    "checkUpdates": 1,
+    "NotifierTitle": "AESIR Open Source Screenshot Tool",
+    "NotifierBody": "New Software Upgrade Available!",
+    "NotifierData": "Click Here for Update",
+    "NotifierActions": "action_click"
+  },
+
+  "ScrenshotSave": {
+    "NotifierTitle": "AESIR Open Source Screenshot Tool",
+    "NotifierFilePath": "",
+    "NotifierBody": "Screenshot saved to : ",
+    "NotifierData": "Click here for open!",
+    "NotifierActions": "action_click"
+  },
+
+  "ClipboardCopy": {
+    "NotifierTitle": "AESIR Open Source Screenshot Tool",
+    "NotifierFilePath": "",
+    "NotifierBody": "Screenshot saved to Clipboard!",
+    "NotifierData": "Click here for upload!",
+    "NotifierActions": "action_click"
+  },
+
+  "Servers": {
+    "Sites": {
+      "imgyukle": {
+        "url": "https://imgyukle.com/api/1/upload/?key=",
+        "api_key": "407289b6f603c950af54fbc79311b9b0"
+      }
+    }
+  }
+
+
+}
