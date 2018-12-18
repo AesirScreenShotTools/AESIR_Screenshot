@@ -13,35 +13,6 @@ import sys
 
 
 
-def main(argv):
-
-    def gtk_style():
-     css = b"""
-  *
-progress, trough {
-  min-height: 20px;
- 
-}
- 
-    """
-     style_provider = Gtk.CssProvider()
-     style_provider.load_from_data(css)
-
-     Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(),
-            style_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
-
-    gtk_style()
-
-
-if __name__ == "__main__":
-    main(sys.argv)
-
-
-
-
 
 
 
@@ -111,7 +82,7 @@ def main():
 
     if aesir_system_mode == AesirStartArguments.START_FROM_SYSTEMD:
 
-        confmanager("/home/mdemirtas/Desktop/untitled/conf.json")
+        confmanager("/home/firat/Desktop/AESIR_Screenshot/src/conf.json")
         indicator = AppIndicator()
         gtk.main()
 

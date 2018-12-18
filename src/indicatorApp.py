@@ -55,7 +55,10 @@ class AppIndicator():
         try:
             received_json = self.configurations.parseJson(self.result.data)
         except:
+            print(self.result.data)
             print("sd")
+
+
 
         if self.versionCompare(received_json["current_version"]) < 0:
             self.systemtrayicon.set_status(indicator.IndicatorStatus.ACTIVE)
@@ -88,7 +91,7 @@ class AppIndicator():
 
     def __init__(self ):
 
-        self.configurations = confmanager("/home/mdemirtas/Desktop/untitled/conf.json")
+        self.configurations = confmanager("/home/firat/Desktop/AESIR_Screenshot/src/conf.json")
         self.initSoftwareUpdateNotifierData(self.configurations.getConfigFileContext())
         self.confFile = self.configurations.getConfigFileContext()
 
