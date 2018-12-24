@@ -6,8 +6,17 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('Wnck', '3.0')
 from gi.repository import Gtk, Gdk
+
+from gi.repository import GdkPixbuf
+
 import sys
 
+from threading import Thread
+from aesirWindowManager import AesirWindowManager
+
+
+import time
+from gi.repository import GObject
 
 
 
@@ -22,6 +31,55 @@ import sys
 
 
 
+
+
+
+
+def main(argv):
+
+    def gtk_style():
+     css = b"""
+  *
+progress, trough {
+  min-height: 20px;
+ 
+}
+ 
+    """
+     style_provider = Gtk.CssProvider()
+     style_provider.load_from_data(css)
+
+     Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(),
+            style_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
+    gtk_style()
+
+
+if __name__ == "__main__":
+    main(sys.argv)
+
+
+
+
+
+
+
+
+
+
+
+
+
+import sys
+import os # if you want this directory
+
+try:
+    sys.path.index('/usr/lib/python3/dist-packages/aesir') # Or os.getcwd() for this directory
+except ValueError:
+    sys.path.append('/usr/lib/python3/dist-packages/aesir') # Or os.getcwd() for this directory
 
 
 
@@ -82,7 +140,7 @@ def main():
 
     if aesir_system_mode == AesirStartArguments.START_FROM_SYSTEMD:
 
-        confmanager("/home/firat/Desktop/AESIR_Screenshot/src/conf.json")
+
         indicator = AppIndicator()
         gtk.main()
 

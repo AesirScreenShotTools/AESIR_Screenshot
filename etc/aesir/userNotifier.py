@@ -1,5 +1,10 @@
 #using gi for notify library
 import gi
+import subprocess
+import sys
+from subprocess import call
+import os
+
 
 NOTIFY_NAME = 'Notify'  #name of the notifier library
 NOTIFY_VERSION = '0.7'  #version of the current notify library
@@ -22,6 +27,10 @@ class NOTIFIER_TYPES:
     SCREENSHOT_SAVE = 2    # screenshot saved notifier
     CLIPBOARD_COPY  = 3    # clipboard copy notifier
 
+
+
+
+
 '''
 @summary Data structure used in notifier object
 '''
@@ -38,6 +47,13 @@ class userNotifierData(object):
 @summary User notifier callback system using Notifier From gi
 '''
 class userNotifier():
+
+
+    def openImage(self, path):
+        imageViewerFromCommandLine = {'linux':'eog',
+                                      'win32':'explorer',
+                                      'darwin':'open'}[sys.platform]
+        subprocess.run([imageViewerFromCommandLine, path])
 
     #get arguments from caller object and fill them
     def __init__(self, notifierData):
@@ -70,8 +86,6 @@ class userNotifier():
             #if we are here, we call notifier system
             self.notification = notify.Notification.new(notifierData.title, notifierData.body)
 
-
-
             #if argument have action
             if notifierData.actionlist != None:
 
@@ -100,14 +114,12 @@ class userNotifier():
 
         #if Aesir Software Updater Notifier
         if self.type == NOTIFIER_TYPES.SOFTWARE_UPDATE:
-            print("Soft")
-
+            file = os.path.dirname(os.path.realpath(__file__)) + "/preupdater.sh"
+            call(["pkexec","bash", file])
         #if Aesir Clipboard copy Notifier
         elif self.type == NOTIFIER_TYPES.CLIPBOARD_COPY:
             print("Upload ")
 
         #if Aesir Screenshot save Notifier
         elif self.type == NOTIFIER_TYPES.SCREENSHOT_SAVE:
-            print("Open")
-            img = Image.open( self.argument)
-            img.show()
+            self.openImage(self.argument)

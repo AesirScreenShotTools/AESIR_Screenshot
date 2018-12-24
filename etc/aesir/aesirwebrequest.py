@@ -83,6 +83,7 @@ class GoogleSearchUploader:
         self.googlesearchquery()
 
     def uploadmonitorcallback(self, monitor):
+        self.timer = GObject.timeout_add (10000, self.progress_bar.progress_timeout, self)
         step = round(100*(monitor.bytes_read/self.data_length))
         GObject.idle_add(self.progress_step.set_text, "%" + str(step))
         self.progress_bar.setRemainingBytesofFile(monitor.bytes_read)

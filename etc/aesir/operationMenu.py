@@ -12,6 +12,10 @@ import subprocess
 from PIL import Image
 import base64
 
+
+from common import aesirPathManager
+
+
 from userNotifier import userNotifierData as notifydata, userNotifier, NOTIFIER_TYPES
 
 from gi.repository import GdkPixbuf
@@ -43,9 +47,7 @@ class operationMenuDialog():
 
     def saveButton_click_callback(self, widget):
 
-        self.s = progressBarWindow()
-        self.s.changeValueofProgressBar(0.2)
-        # self.saveScreenShot()
+        self.saveScreenShot()
 
     def getRectanglePixbuf(self, pixbuf):
         self.current_pixbuf = pixbuf
@@ -69,13 +71,27 @@ class operationMenuDialog():
         self.tryExit()
 
     def saveScreenShot(self):
-        self.activeWindow.getSelectedAreaPixbuf()
+
+        selected_pixbuf = self.activeWindow.getSelectedAreaPixbuf( )
+
+
+        import time
+        current_time = time.strftime("_%d_%m_%Y_%H:%M")
+
+
+        file_path = self.pathManager.returnImageSavePath() + "screenshot" + current_time + ".png"
+        if file_path is not None:
+            selected_pixbuf.savev(file_path, "png", (), ())
+
+        else:
+            selected_pixbuf.savev("screenshot.png", "png", (), ())
+
         self.notifyData = notifydata(CONF_FILE_INSTANCE['ScrenshotSave']["NotifierTitle"],
                                      NOTIFIER_TYPES.SCREENSHOT_SAVE,
                                      CONF_FILE_INSTANCE['ScrenshotSave']["NotifierBody"],
                                      CONF_FILE_INSTANCE['ScrenshotSave']["NotifierData"],
                                      CONF_FILE_INSTANCE['ScrenshotSave']["NotifierActions"],
-                                     "screenshot.png")
+                                     str(file_path))
 
         self.notifyinstance = userNotifier(self.notifyData)
         self.tryExit()
@@ -183,6 +199,8 @@ class operationMenuDialog():
     def __init__(self, activeWindowInstance):
 
         self.activeWindow = activeWindowInstance
+
+        self.pathManager = aesirPathManager()
 
         self.window = gtk.Window()
         container = gtk.Fixed()

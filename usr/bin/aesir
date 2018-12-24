@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+import os
+from subprocess import call
+
+if __name__ == '__main__':
+    try:
+       command_output  = os.popen('dpkg -L aesir-ss |grep aesir.py').readline()
+       program_entry_point = command_output.split('\n')
+       call(["python3", program_entry_point[0]])
+    except Exception as E:
+       print(E) 
+

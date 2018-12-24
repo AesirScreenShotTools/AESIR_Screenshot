@@ -193,6 +193,8 @@ class ActiveWindow(gtk.Window):
 
     def uploadSubMenuClickCallback(self, widget, args):
 
+
+        self.operation_menu.saveScreenShot()
         x = GoogleSearchUploader("http://www.google.com.tr/searchbyimage/upload", "screenshot.png", None)
         x.startupload()
 
@@ -292,7 +294,9 @@ class ActiveWindow(gtk.Window):
         x1 = self.start_position_of_x
         y0 = self.end_position_of_y
         y1 = self.start_position_of_y
+
         crr = None
+
         if (x0 < x1):
             if (y0 < y1):
                 crr = GdkPixbuf.Pixbuf.new_subpixbuf(self.active_window_pixbuf, x0, y0, abs(x0 - x1), abs(y0 - y1))
@@ -305,7 +309,6 @@ class ActiveWindow(gtk.Window):
                 crr = GdkPixbuf.Pixbuf.new_subpixbuf(self.active_window_pixbuf, x1, y1, abs(x0 - x1), abs(y0 - y1))
 
         if (crr != None):
-            crr.savev("screenshot.png", "png", (), ())
             return crr
         else:
             return None

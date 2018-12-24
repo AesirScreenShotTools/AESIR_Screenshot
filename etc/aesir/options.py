@@ -123,7 +123,7 @@ class optionMenu(gtk.Window):
         self.text_label_fast_screenshot = gtk.Entry()
         self.text_label_shortcut_full_screenshot = gtk.Entry()
 
-        self.text_shortcut_screenshot.connect("preedit-changed+", self.openKeyDetectiondialog)
+
 
         self.text_shortcut_screenshot.set_text("Ctrl + Insert")
         self.text_label_fast_screenshot.set_text("Ctrl + Printscreen")

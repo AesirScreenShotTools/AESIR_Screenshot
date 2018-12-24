@@ -2,6 +2,7 @@
   "product": "AESIR Custom Screenshot Tool",
   "version": 1,
   "development_link": "https://github.com/muratdemirtas/aesir",
+  "product_link": "http://www.embedded-tips.com",
   "update_link": "https://raw.githubusercontent.com/muratdemirtas/aesir/master/versions.json",
   "icons": {
     "folder": "icons",
@@ -45,6 +46,20 @@
     "NotifierBody": "Screenshot saved to Clipboard!",
     "NotifierData": "Click here for upload!",
     "NotifierActions": "action_click"
+  },
+
+  "IndicatorAPPMenuItems": [
+    "Take a Screenshot!=clickTakeSSCB=activate=False",
+    "Windows=clickFindWindowsCB=activate=True",
+    "Options=clickOptionsCB=activate=False",
+    "About=clickAboutCB=activate=False",
+    "Help=clickHelpCB=activate=False",
+    "Check Updates=clickCheckUpdatesCB=activate=False",
+    "Exit=clickExitCB=activate=False"
+  ],
+
+  "Configs": {
+    "CheckUpdates": "True"
   },
 
   "Servers": {

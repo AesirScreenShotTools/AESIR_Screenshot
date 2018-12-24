@@ -1,0 +1,10 @@
+Package: aesir-ss
+Version: 0.01
+Architecture: all
+Maintainer: your name<your mail id>
+Installed-Size: 2
+Depends: python-appindicator, python3-xlib, gir1.2-appindicator3-0.1, python3-requests-toolbelt, python3-pil
+Section: extras
+Priority: optional
+Homepage: your homepage
+Description: describe
